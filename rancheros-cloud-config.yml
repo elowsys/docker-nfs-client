@@ -13,7 +13,7 @@ write_files:
 rancher:
   services:
     nfs:
-      image: d3fk/nfs-client
+      image: walkerk1980/rancher-nfs-client
       labels:
         io.rancher.os.after: console, preload-user-images
         io.rancher.os.scope: system
