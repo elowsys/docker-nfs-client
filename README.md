@@ -6,7 +6,7 @@ This is a Docker image for a light NFS client (~10MB) compatible with database u
 
 image name **walkerk1980/nfs-client**
 
-`docker pull walkerk1980d/nfs-client`
+`docker pull walkerk1980/nfs-client`
 
 Docker hub repository: https://hub.docker.com/r/walkerk1980/nfs-client/
 
