@@ -4,11 +4,11 @@ This is a Docker image for a light NFS client (~10MB) compatible with database u
 
 ## Docker image
 
-image name **walkerk1980/nfs-client**
+image name **walkerk1980/rancher-nfs-client**
 
-`docker pull walkerk1980/nfs-client`
+`docker pull walkerk1980/rancher-nfs-client`
 
-Docker hub repository: https://hub.docker.com/r/walkerk1980/nfs-client/
+Docker hub repository: https://hub.docker.com/r/walkerk1980/rancher-nfs-client/
 
 
 ## Origin
@@ -33,35 +33,35 @@ Several possibilities:
 
 Run the container
 
-`docker run -itd --privileged=true --net=host walkerk1980/nfs-client`
+`docker run -itd --privileged=true --net=host walkerk1980/rancher-nfs-client`
 
 then you can use NFS to mount all your mountpoints on your host
 
 `sudo mount -t nfs SERVER_IP:/shared_path /mount_point`
 
-### 2. Mount the mount-point **into** the nfs-client container
+### 2. Mount the mount-point **into** the rancher-nfs-client container
 
 Basic command
-`docker run -itd --privileged=true --net=host  -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/nfs-client`
+`docker run -itd --privileged=true --net=host  -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/rancher-nfs-client`
 
 **It is more convenient to set a volume **
 
 Simply add a volume if you need to share the volume with other containers or mount it directly on your host (take care to add the **:shared** mention on the volume option)
-`docker run -itd --privileged=true --name nfs --net=host -v /mnt/shared_nfs:/mnt/nfs-1:shared -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/nfs-client`
+`docker run -itd --privileged=true --name nfs --net=host -v /mnt/shared_nfs:/mnt/nfs-1:shared -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/rancher-nfs-client`
 
 Then, using the `--volume-from nfs` option when runing another container will also made available the nfs shared content in this new container   
 *Alternatively if you are not using a "named volume" but a "shared volume" you could also directly mount the host's directory that mounts the nfs in the new container*
 
 
 
-### 3.  For RancherOS users it is possible to run this nfs-client container **at RancherOS startup** 
+### 3.  For RancherOS users it is possible to run this rancher-nfs-client container **at RancherOS startup** 
 
 by adding the nfs service to one of your cloud-config.yml, user-config.yml or enabled service.yml... 
 
-i.e: see the file [rancheros-cloud-config.yml](https://github.com/Angatar/docker-nfs-client/blob/master/rancheros-cloud-config.yml)
+i.e: see the file [rancheros-cloud-config.yml](https://github.com/walkerk1980/docker-nfs-client/blob/master/rancheros-cloud-config.yml)
 
 
-You could also use the [additional mount syntax](https://docs.rancher.com/os/storage/additional-mounts/) addapted to NFS (since you now have a nfs-client started at os startup). 
+You could also use the [additional mount syntax](https://docs.rancher.com/os/storage/additional-mounts/) addapted to NFS (since you now have a rancher-nfs-client started at os startup). 
 ie:
 
 ```
