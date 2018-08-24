@@ -4,11 +4,11 @@ This is a Docker image for a light NFS client (~10MB) compatible with database u
 
 ## Docker image
 
-image name **d3fk/nfs-client**
+image name **walkerk1980/nfs-client**
 
-`docker pull d3fk/nfs-client`
+`docker pull walkerk1980d/nfs-client`
 
-Docker hub repository: https://hub.docker.com/r/d3fk/nfs-client/
+Docker hub repository: https://hub.docker.com/r/walkerk1980/nfs-client/
 
 
 ## Origin
@@ -33,7 +33,7 @@ Several possibilities:
 
 Run the container
 
-`docker run -itd --privileged=true --net=host d3fk/nfs-client`
+`docker run -itd --privileged=true --net=host walkerk1980/nfs-client`
 
 then you can use NFS to mount all your mountpoints on your host
 
@@ -42,12 +42,12 @@ then you can use NFS to mount all your mountpoints on your host
 ### 2. Mount the mount-point **into** the nfs-client container
 
 Basic command
-`docker run -itd --privileged=true --net=host  -e SERVER=nfs_server_ip -e SHARE=shared_path d3fk/nfs-client`
+`docker run -itd --privileged=true --net=host  -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/nfs-client`
 
 **It is more convenient to set a volume **
 
 Simply add a volume if you need to share the volume with other containers or mount it directly on your host (take care to add the **:shared** mention on the volume option)
-`docker run -itd --privileged=true --name nfs --net=host -v /mnt/shared_nfs:/mnt/nfs-1:shared -e SERVER=nfs_server_ip -e SHARE=shared_path d3fk/nfs-client`
+`docker run -itd --privileged=true --name nfs --net=host -v /mnt/shared_nfs:/mnt/nfs-1:shared -e SERVER=nfs_server_ip -e SHARE=shared_path walkerk1980/nfs-client`
 
 Then, using the `--volume-from nfs` option when runing another container will also made available the nfs shared content in this new container   
 *Alternatively if you are not using a "named volume" but a "shared volume" you could also directly mount the host's directory that mounts the nfs in the new container*
@@ -83,6 +83,7 @@ The MIT License (MIT)
 Copyright (c) 2015 Evey Quirk
 Copyright (c) 2015 Chris Fordham
 Copyright (c) 2016 d3fk
+Copyright (c) 2018 walkerk1980
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
