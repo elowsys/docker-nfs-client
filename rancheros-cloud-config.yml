@@ -24,5 +24,5 @@ rancher:
       - /usr/bin/iptables:/sbin/iptables:ro
       - /mnt/nfs-1:/mnt/nfs-1:shared
       environment:
-        SERVER: X.X.X.X
-        SHARE: /shared_path
+        SERVER: 192,168.150.113
+        SHARE: /mnt/NetData/VmContainer
